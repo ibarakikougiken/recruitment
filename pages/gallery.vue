@@ -37,7 +37,7 @@ const images = [
     alt: "航空技術研究会のロゴ",
   },
   {
-    path: "/drone.jpg",
+    path: "drone.jpg",
     alt: "空を飛ぶ DJI Phantom 4 Advance",
   },
   {
@@ -65,6 +65,8 @@ const images = [
     alt: "サーボモーターを回すプログラム",
   },
 ];
+
+const path = (image: string) => `/images/${image}`;
 </script>
 
 <template>
@@ -93,9 +95,9 @@ const images = [
 
     <div class="images">
       <img
-        v-for="image in images"
-        :key="image.path"
-        :src="require(`~/assets/images/${image.path}`)"
+        v-for="(image, index) in images"
+        :key="index"
+        :src="path(image.path)"
         :alt="image.alt"
         class="image"
       />
