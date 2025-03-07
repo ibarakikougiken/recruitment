@@ -7,8 +7,17 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ja",
       },
-      link: [{ rel: "icon", href: "favicon.png" }],
+      link: [{ rel: "icon", href: "/favicon.png" }],
       meta: [
+        // SEO
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          name: "keywords",
+          content:
+            "茨城大学,日立キャンパス,水戸キャンパス,工学部,サークル,学生団体,航空技術研究会,新歓,新歓祭ドローン,ラジコン,ロボット,ロボコン,電子工作,プログラミング,教育,社会貢献",
+        },
+        // OGP
         {
           hid: "og:url",
           property: "og:url",
@@ -24,7 +33,7 @@ export default defineNuxtConfig({
           hid: "og:description",
           property: "og:description",
           content:
-            "ドローン、ラジコン飛行機、電子工作、プログラミングなどの分野で幅広く活動する茨城大学航空技術研究会の新歓特設サイトです。",
+            "ドローン、ラジコン飛行機、電子工作、プログラミングなどの分野で幅広く活動する茨城大学公認サークル茨城大学航空技術研究会の新歓特設サイトです。",
         },
 
         {
@@ -37,7 +46,7 @@ export default defineNuxtConfig({
           property: "og:image",
           content: "https://ibarakikougiken.github.io/recruitment/og.png",
         },
-
+        // Twitter
         {
           name: "twitter:card",
           content: "summary_large_image",
