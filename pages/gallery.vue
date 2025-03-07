@@ -9,7 +9,7 @@ useHead({
   ],
 });
 
-const video = ref<{ player: YT.Player | undefined } | null>(null);
+const video = ref<{ player: YT.Player } | null>(null);
 const muted = useMute();
 
 watch(muted, (value) => {
@@ -21,15 +21,12 @@ watch(muted, (value) => {
   }
 });
 
-onMounted(() => {
-  const { player } = video.value!;
-  muted && player?.mute();
-  player?.seekTo(0, true);
-  player?.playVideo();
-  player?.addEventListener("onReady", () => {
-    player?.playVideo();
-  });
-});
+function onPlayerReady() {
+  const player = video.value?.player as YT.Player;
+  if (!player) return;
+  player.setPlaybackQuality("hd1080");
+  player.playVideo();
+}
 
 const images = [
   {
@@ -79,17 +76,17 @@ const path = (image: string) => `/recruitment/images/${image}`;
         /**
          * @see https://developers.google.com/youtube/player_parameters#Parameters
          */
-        controls: 0, // Hide the video controls
-        autoplay: 1, // Autoplay the video
         loop: 1, // Loop the video
         rel: 0, // Hide related videos
+        controls: 0, // Hide the controls
         enablejsapi: 1, // Enable the JS API
-        playlist: 'QSbKgX8El1k', // Needed for the loop
-        disablekb: 1, // Disable keyboard controls
-        fs: 0, // Disable fullscreen
-        iv_load_policy: 3, // Disable annotations
         mute: muted ? 1 : 0, // Mute the video
+        iv_load_policy: 3, // Disable annotations
+        playlist: 'QSbKgX8El1k', // Needed for the loop
       }"
+      :width="1920"
+      :height="1080"
+      @ready="onPlayerReady"
       trigger="visible"
     />
 
