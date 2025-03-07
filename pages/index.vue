@@ -62,11 +62,10 @@ onMounted(() => {
       </div>
 
       <div class="container">
-        <NuxtImg
+        <img
           class="icon"
-          src="/icon.png"
-          alt="茨城大学航空技術研究会"
-          format="webp"
+          src="~/assets/images/icon.png"
+          alt="航空技術研究会のアイコン"
           width="300"
           height="300"
         />
@@ -96,9 +95,6 @@ onMounted(() => {
       <h2>新歓イベント</h2>
       <p>開催予定の新歓イベントは以下の通りです。</p>
       <ul>
-        <!-- <li>新歓祭 (水戸キャンパス、4月9日)</li>
-        <li>課外活動説明会 (日立キャンパス、4月9日)</li>
-        <li>ドローン操縦体験会 (水戸キャンパス、日時未定)</li> -->
         <li>
           4月9日
           <ul>

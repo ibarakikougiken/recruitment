@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { NuxtLayout } from "#components";
-
 const error = useError();
 
 setPageLayout("default");

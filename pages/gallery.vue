@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { NuxtImg } from "#components";
-
 useHead({
   title: "ギャラリー",
   meta: [
@@ -24,13 +22,13 @@ watch(muted, (value) => {
 });
 
 onMounted(() => {
-  // const { player } = video.value!;
-  // muted && player?.mute();
-  // player?.seekTo(0, true);
-  // player?.playVideo();
-  // player?.addEventListener("onReady", () => {
-  //   player?.playVideo();
-  // });
+  const { player } = video.value!;
+  muted && player?.mute();
+  player?.seekTo(0, true);
+  player?.playVideo();
+  player?.addEventListener("onReady", () => {
+    player?.playVideo();
+  });
 });
 
 const images = [
@@ -94,12 +92,11 @@ const images = [
     />
 
     <div class="images">
-      <NuxtImg
+      <img
         v-for="image in images"
         :key="image.path"
-        :src="image.path"
+        :src="require(`~/assets/images/${image.path}`)"
         :alt="image.alt"
-        format="webp"
         class="image"
       />
     </div>

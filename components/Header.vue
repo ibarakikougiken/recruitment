@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { NuxtLink } from "#components";
 import ShuffleText from "shuffle-text";
 
 const muted = useMute();
