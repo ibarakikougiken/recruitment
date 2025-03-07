@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const loaded = ref(true);
+const loaded = ref(false);
 const key = "loaded";
+
 onMounted(() => {
   if (window.sessionStorage.getItem(key) === "true") {
     loaded.value = true;
@@ -15,19 +16,20 @@ function loadedHandler() {
 </script>
 
 <template>
-  <NuxtRouteAnnouncer />
-  <NuxtLoadingIndicator />
-  <NuxtErrorBoundary />
-  <Loading v-if="!loaded" @loaded="loadedHandler" />
-  <NuxtLayout class="loaded" v-if="loaded">
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <NuxtRouteAnnouncer />
+    <NuxtLoadingIndicator />
+    <NuxtErrorBoundary />
+    <div v-if="loaded" class="page">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
+    <Loading v-else @loaded="loadedHandler" />
+  </div>
 </template>
 
-<style>
-.loaded {
-  animation: fadeIn 0.2s ease-in-out forwards;
-}
+<style scoped>
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -35,5 +37,8 @@ function loadedHandler() {
   to {
     opacity: 1;
   }
+}
+.page {
+  animation: fadeIn 0.5s;
 }
 </style>

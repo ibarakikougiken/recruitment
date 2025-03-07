@@ -35,10 +35,15 @@ function fadeOut(el: HTMLElement) {
 onMounted(() => {
   const el = top.value;
   if (!el) return;
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > document.documentElement.clientHeight / 2) fadeIn(el);
-    else fadeOut(el);
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      window.screenY > document.body.clientHeight / 2
+        ? fadeIn(el)
+        : fadeOut(el);
+    },
+    { passive: true },
+  );
 });
 </script>
 

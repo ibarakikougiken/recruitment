@@ -109,6 +109,10 @@
   justify-content: center;
   align-items: center;
   aspect-ratio: 1;
+
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 .twitter {
   background-color: #000;

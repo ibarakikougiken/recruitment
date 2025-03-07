@@ -67,6 +67,8 @@ function toggleMenu() {
         >
           <desc v-if="muted">ミュートを解除</desc>
           <desc v-else>ミュート</desc>
+          <title v-if="muted">ミュートを解除</title>
+          <title v-else>ミュート</title>
           <g v-if="muted">
             <path
               stroke="#000"

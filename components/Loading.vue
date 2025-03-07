@@ -50,13 +50,11 @@ onMounted(() => {
   <div class="loading">
     <div class="inner">
       <p
-        v-for="(text, index) in texts"
+        v-for="(_, index) in texts"
         :key="index"
         ref="elements"
         class="shuffle-text"
-      >
-        {{ text }}
-      </p>
+      />
     </div>
   </div>
 </template>

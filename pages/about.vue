@@ -39,7 +39,7 @@ useHead({
       <div>
         <h2>スケジュール</h2>
         <p>航空技術研究会のスケジュール(予定)です。</p>
-        <p>昨年度のスケジュールは以下ページに掲載しています。</p>
+        <p>昨年度の活動報告は以下のリンクからご覧いただけます。</p>
         <p>
           <a
             href="https://ibarakikougiken.github.io/articles/mhtritcywxfttwuv/"

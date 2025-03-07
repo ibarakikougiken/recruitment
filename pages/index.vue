@@ -62,13 +62,6 @@ onMounted(() => {
       </div>
 
       <div class="container">
-        <img
-          class="icon"
-          src="~/assets/images/icon.png"
-          alt="航空技術研究会のアイコン"
-          width="300"
-          height="300"
-        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
