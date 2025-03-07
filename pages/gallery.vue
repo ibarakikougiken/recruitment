@@ -66,7 +66,7 @@ const images = [
   },
 ];
 
-const path = (image: string) => `/images/${image}`;
+const path = (image: string) => `/recruitment/images/${image}`;
 </script>
 
 <template>
