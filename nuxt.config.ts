@@ -7,7 +7,12 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ja",
       },
-      link: [{ rel: "icon", href: "/favicon.png" }],
+      link: [
+        {
+          rel: "icon",
+          href: "https://ibarakikougiken.github.io/recruitment/favicon.png",
+        },
+      ],
       meta: [
         // SEO
         { charset: "utf-8" },
