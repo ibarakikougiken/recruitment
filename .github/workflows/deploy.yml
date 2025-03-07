@@ -6,12 +6,12 @@ on:
     branches:
       - main
 
-permissions: 
+permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency: 
+concurrency:
   group: "pages"
   cancel-in-progress: true
 
@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 
+      - name: Checkout
         uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: latest
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install

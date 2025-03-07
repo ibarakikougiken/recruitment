@@ -1,4 +1,4 @@
-import { readdirSync } from "fs";
+import { readdirSync } from "node:fs";
 
 const imgs = readdirSync("assets/images");
 
@@ -83,6 +83,7 @@ export default defineNuxtConfig({
     dir: "assets/images",
   },
   nitro: {
+    preset: "github_pages",
     prerender: {
       routes: imgs.map((img) => {
         if (img === "icon.png") {
@@ -90,9 +91,11 @@ export default defineNuxtConfig({
         }
         return `/_ipx/f_webps/${img}`;
       }),
+      failOnError: false,
     },
   },
   compatibilityDate: "2025-03-05",
+  ssr: true,
   devtools: { enabled: false },
   modules: ["@nuxt/scripts", "@nuxt/eslint", "@nuxt/image"],
 });
