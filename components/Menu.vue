@@ -5,9 +5,10 @@ const emit = defineEmits(["close_menu"]);
 
 const links = [
   { to: "/", text: "Home" },
+  { to: "/join", text: "Join" },
   { to: "/about", text: "About" },
   { to: "/gallery", text: "Gallery" },
-  { to: "/join", text: "Join" },
+  { to: "/contents", text: "Contents" },
   { to: "/privacy-policy", text: "Privacy Policy" },
 ];
 

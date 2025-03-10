@@ -1,83 +1,6 @@
-<script setup lang="ts">
-import ShuffleText from "shuffle-text";
-
-useHead({
-  meta: [
-    {
-      name: "description",
-      content:
-        "ドローン、ラジコン飛行機、電子工作、プログラミングなどの分野で幅広く活動する茨城大学航空技術研究会の新歓特設サイトです。",
-    },
-  ],
-});
-
-const index = ref(0);
-const elements = ref<HTMLElement[]>([]);
-const data = [
-  ["電子工作、プログラミング、", "はじめてみよう。"],
-  ["入ってみな、", "飛ぶぞ"],
-  ["さあ、", "社会貢献。"],
-  ["新しいコト、", "挑戦してみませんか？"],
-  ["緩いです。", "とっても。"],
-  ["ドローン、", "飛ばしてみない？"],
-  ["撮ろう", "絶景。"],
-];
-
-const letters =
-  "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
-
-onMounted(() => {
-  for (let i = 0; i < elements.value.length; i++) {
-    const element = elements.value[i];
-    const shuffleText = new ShuffleText(element);
-    shuffleText.setText(data[index.value][i]);
-    shuffleText.sourceRandomCharacter = letters;
-    shuffleText.emptyCharacter = `\u2000`;
-    shuffleText.start();
-  }
-  setInterval(() => {
-    index.value = (index.value + 1) % data.length;
-    for (let i = 0; i < elements.value.length; i++) {
-      if (data[index.value][i] === undefined) {
-        continue;
-      }
-      const element = elements.value[i];
-      const shuffleText = new ShuffleText(element);
-      shuffleText.setText(data[index.value][i]);
-      shuffleText.sourceRandomCharacter = letters;
-      shuffleText.emptyCharacter = `\u2000`;
-      shuffleText.start();
-    }
-  }, 6000);
-});
-</script>
-
 <template>
   <div>
-    <div class="hero">
-      <div class="message">
-        <div class="container">
-          <span class="text" v-for="(_, i) in 2" :key="i" ref="elements"></span>
-        </div>
-      </div>
-
-      <div class="container">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="2rem"
-          height="2rem"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="scroll"
-        >
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
-      </div>
-    </div>
+    <Hero />
 
     <div class="container description">
       <h1>茨城大学航空技術研究会 新歓特設サイト</h1>
@@ -144,27 +67,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.hero {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-.message {
-  width: 100%;
-  height: calc(90vh - 12rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-.text {
-  font-size: clamp(1.5rem, 8vw, 5rem);
-  user-select: none;
-}
 .container {
   width: 80%;
   height: 50%;

@@ -3,18 +3,27 @@ const error = useError();
 
 setPageLayout("default");
 
-useHead({
-  title: "Error",
-  meta: [
-    {
-      name: "description",
-      content: "An error occurred",
-    },
-    {
-      name: "robots",
-      content: "noindex",
-    },
-  ],
+const title = computed(() => {
+  if (error.value?.statusCode === 404) {
+    return "404";
+  }
+  return "An error has occurred";
+});
+const description = computed(() => {
+  if (error.value?.statusCode === 404) {
+    return "Page not found";
+  }
+  return error.value?.message;
+});
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
+  robots: "noindex",
 });
 </script>
 

@@ -11,10 +11,12 @@ const schedules = ref<Schedule[]>([]);
 const data: Schedule[] = [
   { title: "新歓祭", start: 4, end: 4 },
   { title: "科学の祭典", start: 5, end: 10 },
-  { title: "こうがく祭", start: 10, end: 11 },
-  { title: "茨苑祭", start: 10, end: 11 },
-  { title: "ドローン・RC機製作", start: 4, end: 3 },
-  { title: "ドローン教室", start: 4, end: 3 },
+  { title: "新歓祭", start: 2, end: 3 },
+  { title: "飛行ロボコン", start: 6, end: 9 },
+  { title: "こうがく祭", start: 9, end: 11 },
+  { title: "茨苑祭", start: 9, end: 11 },
+  { title: "忘年会", start: 12, end: 12 },
+  { title: "ドローン・RC機製作、ドローン教室", start: 4, end: 3 },
 ];
 
 onMounted(() => {

@@ -89,11 +89,21 @@ export default defineNuxtConfig({
       },
     },
   },
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 3,
+          searchDepth: 3,
+        },
+      },
+    },
+  },
   nitro: {
     preset: "github_pages",
   },
   compatibilityDate: "2025-03-05",
   ssr: true,
   devtools: { enabled: false },
-  modules: ["@nuxt/scripts", "@nuxt/eslint"],
+  modules: ["@nuxt/content", "@nuxt/scripts", "@nuxt/eslint"],
 });

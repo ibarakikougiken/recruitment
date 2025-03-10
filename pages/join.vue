@@ -1,12 +1,14 @@
 <script setup lang="ts">
-useHead({
-  title: "入会のご案内",
-  meta: [
-    {
-      name: "description",
-      content: "航空技術研究会への入会についてのご案内です。",
-    },
-  ],
+const title = "入会のご案内";
+const description = "航空技術研究会への入会についてのご案内です。";
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
 });
 </script>
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const top = ref<HTMLAnchorElement | null>(null);
+let isLocked = false;
 
 function handleClick(e: MouseEvent) {
   e.preventDefault();
@@ -10,37 +11,54 @@ function handleClick(e: MouseEvent) {
 }
 function fadeIn(el: HTMLElement) {
   if (el.style.display === "block") return;
-  el.style.opacity = "0";
+  if (isLocked) return;
+
+  isLocked = true;
   el.style.display = "block";
-  el.getAnimations().forEach((animation) => animation.cancel());
+  el.style.opacity = "0";
+
   el.animate([{ opacity: 0 }, { opacity: 1 }], {
     duration: 200,
     fill: "forwards",
-  }).onfinish = () => {
+  }).finished.then((anim) => {
     el.style.opacity = "1";
-  };
+    anim.cancel();
+    isLocked = false;
+  });
 }
 function fadeOut(el: HTMLElement) {
   if (el.style.display === "none") return;
+  if (isLocked) return;
+
+  isLocked = true;
   el.style.opacity = "1";
-  el.getAnimations().forEach((animation) => animation.cancel());
+
   el.animate([{ opacity: 1 }, { opacity: 0 }], {
     duration: 200,
     fill: "forwards",
-  }).onfinish = () => {
+  }).finished.then((anim) => {
     el.style.display = "none";
-  };
+    el.style.opacity = "0";
+    isLocked = false;
+    anim.cancel();
+  });
 }
 
 onMounted(() => {
   const el = top.value;
   if (!el) return;
+
+  function visible() {
+    const scrollY = window.scrollY;
+    const height = window.innerHeight;
+    return scrollY > height / 2;
+  }
+
+  el.style.display = visible() ? "block" : "none";
   window.addEventListener(
     "scroll",
     () => {
-      window.screenY > document.body.clientHeight / 2
-        ? fadeIn(el)
-        : fadeOut(el);
+      visible() ? fadeIn(el) : fadeOut(el);
     },
     { passive: true },
   );
@@ -100,22 +118,23 @@ body {
   padding: 1rem;
 
   width: calc(100% - 2rem);
-  overflow: auto;
 }
 .top {
-  display: none;
   position: fixed;
   right: 1.5rem;
   bottom: 1.5rem;
   font-size: 2rem;
   text-decoration: none;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 600;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
 .top:hover {
+  animation: bounce 1s ease-in-out infinite;
+}
+.top:active {
   animation: bounce 1s ease-in-out infinite;
 }
 @keyframes bounce {

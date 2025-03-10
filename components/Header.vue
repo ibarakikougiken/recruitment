@@ -32,10 +32,6 @@ onMounted(() => {
     );
   }
 });
-
-function toggleMenu() {
-  menu_open.value = !menu_open.value;
-}
 </script>
 
 <template>
@@ -57,7 +53,11 @@ function toggleMenu() {
       </nav>
     </div>
     <div class="buttons">
-      <button class="mute" @click="muted = !muted">
+      <button
+        class="mute"
+        :title="muted ? 'ミュートを解除' : 'ミュート'"
+        @click="muted = !muted"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="2rem"
@@ -93,7 +93,11 @@ function toggleMenu() {
           </g>
         </svg>
       </button>
-      <button class="menu" @click="toggleMenu">
+      <button
+        :title="menu_open ? 'メニューを閉じる' : 'メニューを開く'"
+        class="menu"
+        @click="menu_open = !menu_open"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="2rem"
@@ -110,7 +114,7 @@ function toggleMenu() {
         </svg>
       </button>
     </div>
-    <Menu v-if="menu_open" @close_menu="toggleMenu" />
+    <Menu v-if="menu_open" @close_menu="menu_open = false" />
   </header>
 </template>
 
@@ -159,8 +163,15 @@ header {
   transition: 0.2s;
   cursor: pointer;
 }
-.name:hover {
-  animation: shake 0.5s infinite ease-in-out both running;
+@media (hover: none) {
+  .name:active {
+    animation: shake 0.5s infinite ease-in-out both running;
+  }
+}
+@media (hover: hover) {
+  .name:hover {
+    animation: shake 0.5s infinite ease-in-out both running;
+  }
 }
 .name .main {
   font-size: 1.5rem;
@@ -224,9 +235,17 @@ button {
   align-items: center;
   transition: 0.2s;
 }
-button:hover {
-  border-radius: 50%;
-  animation: route 0.5s alternate;
+@media (hover: none) {
+  button:active {
+    border-radius: 50%;
+    animation: route 0.5s alternate;
+  }
+}
+@media (hover: hover) {
+  button:hover {
+    border-radius: 50%;
+    animation: route 0.5s alternate;
+  }
 }
 
 @media (max-width: 1000px) {

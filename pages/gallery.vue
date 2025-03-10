@@ -1,12 +1,13 @@
 <script setup lang="ts">
-useHead({
-  title: "ギャラリー",
-  meta: [
-    {
-      name: "description",
-      content: "航空技術研究会の活動写真や動画を掲載しています。",
-    },
-  ],
+const title = "ギャラリー";
+const description = "航空技術研究会の活動写真や動画を掲載しています。";
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
 });
 
 const video = ref<{ player: YT.Player } | null>(null);
