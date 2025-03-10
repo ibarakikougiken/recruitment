@@ -43,7 +43,7 @@ useSeoMeta(meta);
 
 <style scoped>
 .list {
-  max-width: 1200px;
+  max-width: min(1200px, calc(100vw - 3rem));
   margin: 0 auto;
   padding: 0;
   list-style: none;

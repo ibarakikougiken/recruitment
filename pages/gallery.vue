@@ -63,7 +63,7 @@ const path = (image: string) => `/recruitment/images/${image}`;
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <ScriptYouTubePlayer
       ref="video"
       class="video"
@@ -99,6 +99,9 @@ const path = (image: string) => `/recruitment/images/${image}`;
 </template>
 
 <style scoped>
+.container {
+  max-width: calc(100vw - 3rem);
+}
 .video {
   max-width: 800px;
   width: 100%;

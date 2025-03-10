@@ -16,15 +16,12 @@ const description = computed(() => {
   return error.value?.message;
 });
 
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
-  robots: "noindex",
+const meta = useDefaultSeoMeta({
+  title: title.value,
+  description: description.value,
 });
+meta.robots = "noindex";
+useSeoMeta(meta);
 </script>
 
 <template>

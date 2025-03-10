@@ -48,7 +48,7 @@ useSeoMeta(meta);
 
 <style scoped>
 .main {
-  max-width: 800px;
+  max-width: min(800px, calc(100vw - 3rem));
   margin: 0 auto;
 }
 .list {

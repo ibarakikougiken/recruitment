@@ -73,7 +73,8 @@ useSeoMeta(meta);
 
 <style scoped>
 .container {
-  width: 80%;
+  width: 90%;
+  max-width: min(800px, calc(100vw - 3rem));
   height: 50%;
   margin: clamp(0.4rem, 1vw, 1.5rem) auto;
   display: flex;

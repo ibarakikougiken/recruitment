@@ -42,7 +42,7 @@ useSeoMeta(meta);
 
 <style scoped>
 .container {
-  max-width: 800px;
+  max-width: min(800px, calc(100vw - 3rem));
   margin: 0 auto;
   padding: 0 20px;
 }

@@ -18,7 +18,12 @@ function loadedHandler() {
 
 const router = useRouter();
 useSeoMeta({
-  ogUrl: `https://ibarakikougiken.github.io/recruitment/${router.currentRoute.value.path}`,
+  ogUrl: `https://ibarakikougiken.github.io/recruitment${router.currentRoute.value.path}`,
+});
+watch(router.currentRoute, () => {
+  useSeoMeta({
+    ogUrl: `https://ibarakikougiken.github.io/recruitment${router.currentRoute.value.path}`,
+  });
 });
 </script>
 
