@@ -15,12 +15,11 @@ useSeoMeta({
   ogDescription: data?.value?.description,
   ogUrl: `https://ibarakikougiken.github.io/recruitment${path}`,
   ogImage: `https://ibarakikougiken.github.io/recruitment${path}/ogp.png`,
-  twitterCard: "summary_large_image",
-  twitterSite: "@ibarakikougiken",
-  twitterCreator: "@ibarakikougiken",
-  twitterUrl: `https://ibarakikougiken.github.io/recruitment${path}`,
   twitterTitle: data?.value?.title,
   twitterDescription: data?.value?.description,
+  twitterSite: "@ibarakikougiken",
+  twitterCreator: "@ibarakikougiken",
+  twitterCard: "summary_large_image",
   twitterImage: `https://ibarakikougiken.github.io/recruitment${path}/ogp.png`,
 });
 
