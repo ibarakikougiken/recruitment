@@ -1,15 +1,9 @@
 <script setup lang="ts">
-const title = "活動内容";
-const description =
-  "航空技術研究会は、ドローン、ラジコン飛行機、電子工作、プログラミングなどの分野で幅広く活動するサークルです。";
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
+const meta = useDefaultSeoMeta({
+  title: "活動内容",
+  description: "航空技術研究会の活動、スケジュールをご紹介します。",
 });
+useSeoMeta(meta);
 </script>
 
 <template>

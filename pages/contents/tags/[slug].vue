@@ -10,14 +10,12 @@ const { data } = await useAsyncData(tag, () =>
     .all(),
 );
 
-useSeoMeta({
+const meta = useDefaultSeoMeta({
   title: `タグに${tag}を含む記事`,
   description: `タグに${tag}を含む記事一覧`,
-  ogTitle: `タグに${tag}を含む記事`,
-  ogDescription: `タグに${tag}を含む記事一覧`,
-  twitterTitle: `タグに${tag}を含む記事`,
-  twitterDescription: `タグに${tag}を含む記事一覧`,
 });
+
+useSeoMeta(meta);
 </script>
 
 <template>

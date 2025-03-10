@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ibarakikougiken.github.io/recruitment/sitemap.xml

@@ -1,15 +1,9 @@
 <script setup lang="ts">
-const title = "入会のご案内";
-const description = "航空技術研究会への入会についてのご案内です。";
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
+const meta = useDefaultSeoMeta({
+  title: "入会のご案内",
+  description: "航空技術研究会への入会についてのご案内です。",
 });
+useSeoMeta(meta);
 </script>
 
 <template>

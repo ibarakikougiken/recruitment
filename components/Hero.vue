@@ -26,7 +26,12 @@ const data = [
 const letters =
   "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
 
-onMounted(() => {
+onMounted(async () => {
+  // Layout shift として評価されないように待機
+  await new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  });
+
   for (let i = 0; i < elements.value.length; i++) {
     const element = elements.value[i];
     const shuffleText = new ShuffleText(element);

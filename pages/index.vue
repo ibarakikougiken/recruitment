@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const meta = useDefaultSeoMeta({});
+useSeoMeta(meta);
+</script>
+
 <template>
   <div>
     <Hero />

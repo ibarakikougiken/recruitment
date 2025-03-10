@@ -2,6 +2,8 @@
 const loaded = ref(false);
 const key = "loaded";
 
+const layout = ref();
+
 onMounted(() => {
   if (window.sessionStorage.getItem(key) === "true") {
     loaded.value = true;
@@ -13,6 +15,11 @@ function loadedHandler() {
   window.sessionStorage.setItem(key, "true");
   loaded.value = true;
 }
+
+const router = useRouter();
+useSeoMeta({
+  ogUrl: `https://ibarakikougiken.github.io/recruitment/${router.currentRoute.value.path}`,
+});
 </script>
 
 <template>
@@ -20,16 +27,23 @@ function loadedHandler() {
     <NuxtRouteAnnouncer />
     <NuxtLoadingIndicator />
     <NuxtErrorBoundary />
-    <div v-if="loaded" class="page">
+    <Loading @loaded="loadedHandler" :class="{ hidden: loaded }" />
+    <div ref="layout" :class="{ hidden: !loaded, page: loaded }">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
     </div>
-    <Loading v-else @loaded="loadedHandler" />
   </div>
 </template>
 
 <style scoped>
+.hidden {
+  visibility: hidden;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

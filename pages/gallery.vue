@@ -1,14 +1,9 @@
 <script setup lang="ts">
-const title = "ギャラリー";
-const description = "航空技術研究会の活動写真や動画を掲載しています。";
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
+const meta = useDefaultSeoMeta({
+  title: "ギャラリー",
+  description: "航空技術研究会の活動写真や動画を掲載しています。",
 });
+useSeoMeta(meta);
 
 const video = ref<{ player: YT.Player } | null>(null);
 const muted = useMute();

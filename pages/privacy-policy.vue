@@ -1,16 +1,10 @@
 <script setup lang="ts">
-const title = "プライバシーポリシー";
-const description =
-  "茨城大学航空技術研究会のプライバシーポリシーについてのページです。";
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
+const meta = useDefaultSeoMeta({
+  title: "プライバシーポリシー",
+  description:
+    "茨城大学航空技術研究会のプライバシーポリシーについてのページです。",
 });
+useSeoMeta(meta);
 </script>
 
 <template>
