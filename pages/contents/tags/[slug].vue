@@ -14,7 +14,6 @@ const meta = useDefaultSeoMeta({
   title: `タグに${tag}を含む記事`,
   description: `タグに${tag}を含む記事一覧`,
 });
-
 useSeoMeta(meta);
 </script>
 

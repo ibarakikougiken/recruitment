@@ -6,14 +6,11 @@ const { data } = await useAsyncData("blog", () =>
     .all(),
 );
 
-useSeoMeta({
-  title: "記事",
-  description: "記事一覧",
-  ogTitle: "記事",
-  ogDescription: "記事一覧",
-  twitterTitle: "記事",
-  twitterDescription: "記事一覧",
+const meta = useDefaultSeoMeta({
+  title: "記事一覧",
+  description: "記事一覧 | 茨城大学航空技術研究会新歓特設サイト",
 });
+useSeoMeta(meta);
 </script>
 
 <template>
