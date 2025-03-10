@@ -14,10 +14,10 @@ useSeoMeta({
   ogType: "article",
   ogDescription: data?.value?.description,
   ogUrl: `https://ibarakikougiken.github.io/recruitment${path}`,
-  ogImage: `https://ibarakikougiken.github.io/recruitment${path}ogp.png`,
+  ogImage: `https://ibarakikougiken.github.io/recruitment${path}/ogp.png`,
   twitterTitle: data?.value?.title,
   twitterDescription: data?.value?.description,
-  twitterImage: `https://ibarakikougiken.github.io/recruitment${path}ogp.png`,
+  twitterImage: `https://ibarakikougiken.github.io/recruitment${path}/ogp.png`,
 });
 
 // スクロールロック
