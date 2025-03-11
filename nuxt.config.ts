@@ -54,9 +54,9 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-03-05",
   devtools: { enabled: false },
   modules: [
+    "@nuxtjs/sitemap",
     "@nuxt/content",
     "@nuxt/scripts",
     "@nuxt/eslint",
-    "@nuxtjs/sitemap",
   ],
 });

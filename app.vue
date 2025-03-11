@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const loaded = ref(false);
 const key = "loaded";
 
+const loaded = ref(false);
 const layout = ref();
 
 onMounted(() => {
-  if (window.sessionStorage.getItem(key) === "true") {
+  if (window.localStorage.getItem(key) === "true") {
     loaded.value = true;
   } else {
     loaded.value = false;
   }
 });
 function loadedHandler() {
-  window.sessionStorage.setItem(key, "true");
+  window.localStorage.setItem(key, "true");
   loaded.value = true;
 }
 
