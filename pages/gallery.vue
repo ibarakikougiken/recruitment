@@ -101,6 +101,7 @@ const path = (image: string) => `/recruitment/images/${image}`;
 <style scoped>
 .container {
   max-width: calc(100vw - 3rem);
+  margin: 0 auto;
 }
 .video {
   max-width: 800px;
