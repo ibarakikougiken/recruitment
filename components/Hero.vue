@@ -12,13 +12,14 @@ useHead({
 });
 
 const index = ref(0);
+const desc = ref("");
 const elements = ref<HTMLElement[]>([]);
+const fontSize = ref(0);
 const data = [
   ["電子工作、プログラミング、", "はじめてみよう。"],
   ["入ってみな、", "飛ぶぞ"],
   ["さあ、", "社会貢献。"],
   ["新しいコト、", "挑戦してみませんか？"],
-  ["緩いです。", "とっても。"],
   ["ドローン、", "飛ばしてみない？"],
   ["撮ろう", "絶景。"],
 ];
@@ -26,62 +27,75 @@ const data = [
 const letters =
   "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
 
-onMounted(async () => {
-  // Layout shift として評価されないように待機
-  await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
+onMounted(() => {
+  const startShuffle = () => {
+    const promises = elements.value.map((element, i) => {
+      return new Promise<void>((resolve) => {
+        const shuffleText = new ShuffleText(element);
 
-  for (let i = 0; i < elements.value.length; i++) {
-    const element = elements.value[i];
-    const shuffleText = new ShuffleText(element);
-    shuffleText.setText(data[index.value][i]);
-    shuffleText.sourceRandomCharacter = letters;
-    shuffleText.emptyCharacter = `\u2000`;
-    shuffleText.start();
-  }
-  setInterval(() => {
-    index.value = (index.value + 1) % data.length;
-    for (let i = 0; i < elements.value.length; i++) {
-      if (data[index.value][i] === undefined) {
-        continue;
-      }
-      const element = elements.value[i];
-      const shuffleText = new ShuffleText(element);
-      shuffleText.setText(data[index.value][i]);
-      shuffleText.sourceRandomCharacter = letters;
-      shuffleText.emptyCharacter = `\u2000`;
-      shuffleText.start();
-    }
-  }, 6000);
+        const texts = data[index.value];
+        desc.value = texts.join("");
+        const text = texts[i];
+        shuffleText.setText(text);
+
+        const max_len = Math.max(...texts.map((t) => [...t].length));
+        const fontWidth = 500 / max_len + 2;
+        const fontHeight = 100 / texts.length;
+        fontSize.value = Math.floor(Math.min(fontWidth, fontHeight));
+
+        shuffleText.sourceRandomCharacter = letters;
+        shuffleText.emptyCharacter = `\u2000`;
+        shuffleText.duration = 1000;
+
+        shuffleText.start();
+        setTimeout(() => {
+          shuffleText.dispose();
+          resolve();
+        }, 1000 + 1200);
+      });
+    });
+    Promise.all(promises).then(() => {
+      setTimeout(() => {
+        index.value = (index.value + 1) % data.length;
+        startShuffle();
+      }, 6000);
+    });
+  };
+
+  startShuffle();
 });
 </script>
 
 <template>
   <div class="hero">
-    <div class="message">
-      <span class="text" v-for="(_, i) in 2" :key="i" ref="elements"></span>
-    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      :height="fontSize * 1.2 * 2"
+      viewBox="0 0 500 100"
+    >
+      <desc>{{ desc }}</desc>
+      <text
+        v-for="(_, i) in 2"
+        x="0"
+        :y="fontSize * 1.2 * i"
+        dy="50%"
+        :font-size="fontSize"
+        font-weight="bold"
+        :key="i"
+        ref="elements"
+      ></text>
+    </svg>
   </div>
 </template>
 
 <style scoped>
 .hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.message {
-  height: calc(clamp(1.5rem, 8vw, 5rem) * 6);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-.text {
   width: 100%;
-  font-size: clamp(1.5rem, 8vw, 5rem);
+  aspect-ratio: 3 / 1;
   user-select: none;
+}
+svg {
+  max-width: 100%;
+  height: 100%;
 }
 </style>

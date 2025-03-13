@@ -2,7 +2,6 @@
 const key = "loaded";
 
 const loaded = ref(false);
-const layout = ref();
 
 onMounted(() => {
   if (window.localStorage.getItem(key) === "true") {
@@ -33,7 +32,7 @@ watch(router.currentRoute, () => {
     <NuxtLoadingIndicator />
     <NuxtErrorBoundary />
     <Loading @loaded="loadedHandler" :class="{ hidden: loaded }" />
-    <div ref="layout" :class="{ hidden: !loaded, page: loaded }">
+    <div :class="{ page: loaded, hidden: !loaded }">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
@@ -45,8 +44,6 @@ watch(router.currentRoute, () => {
 .hidden {
   visibility: hidden;
   max-height: 100vh;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
 }
 @keyframes fadeIn {

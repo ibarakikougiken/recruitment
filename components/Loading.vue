@@ -4,6 +4,7 @@ import ShuffleText from "shuffle-text";
 const emit = defineEmits(["loaded"]);
 
 const elements = ref<HTMLElement[]>([]);
+const fontSize = ref(0);
 const texts = ["新しいコト、", "挑戦してみませんか？"];
 const duration = 1000;
 
@@ -26,6 +27,11 @@ function effect(target: HTMLElement, text: string): ShuffleText {
 }
 
 onMounted(() => {
+  const max_len = Math.max(...texts.map((t) => [...t].length));
+  const fontWidth = 500 / max_len + 2;
+  const fontHeight = 100 / texts.length;
+  fontSize.value = Math.floor(Math.min(fontWidth, fontHeight));
+
   const promises = elements.value.map((element, index) => {
     return new Promise<void>((resolve) => {
       const e = effect(element, texts[index]);
@@ -48,42 +54,55 @@ onMounted(() => {
 
 <template>
   <div class="loading">
-    <div class="inner">
-      <p
-        v-for="(_, index) in texts"
-        :key="index"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+      <desc>
+        {{ texts.join("") }}
+      </desc>
+      <text
+        v-for="(_, i) in 2"
+        :key="i"
+        x="0"
+        :y="fontSize * 1.2 * i"
+        :font-size="fontSize"
+        font-weight="bold"
         ref="elements"
         class="shuffle-text"
       />
-    </div>
+    </svg>
   </div>
 </template>
 
 <style scoped>
 .loading {
-  width: 100vw;
-  height: 100vh;
+  width: calc(100vw - 4rem);
+  height: calc(100vh - 4rem);
+  padding: 2rem;
   position: fixed;
   inset: 0;
   z-index: 1000;
   background-color: #fff;
   color: #333;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  user-select: none;
+  -webkit-user-drag: none;
 }
-.inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: start;
+svg {
+  width: 100%;
+  height: 100%;
+  dominant-baseline: hanging;
+}
+text {
+  fill: currentColor;
 }
 .shuffle-text {
-  width: 100%;
-  font-size: calc(100vw / 12);
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-  user-select: none;
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
