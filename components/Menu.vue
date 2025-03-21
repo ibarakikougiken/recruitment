@@ -23,7 +23,6 @@ onMounted(() => {
     }
 
     element.addEventListener("mouseenter", start);
-    element.addEventListener("touchstart", start);
   }
 });
 </script>
