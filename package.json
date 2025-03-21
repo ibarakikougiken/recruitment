@@ -13,13 +13,13 @@
     "lint:fix": "eslint . --fix",
     "new_content": "node ./bin/new_content.ts"
   },
-  "packageManager": "pnpm@10.6.2",
+  "packageManager": "pnpm@10.6.5",
   "dependencies": {
-    "@nuxt/content": "^3.3.0",
-    "@nuxt/scripts": "0.11.1",
-    "@nuxtjs/sitemap": "7.2.7",
+    "@nuxt/content": "^3.4.0",
+    "@nuxt/scripts": "0.11.2",
+    "@nuxtjs/sitemap": "7.2.9",
     "github-markdown-css": "^5.8.1",
-    "nuxt": "^3.16.0",
+    "nuxt": "^3.16.1",
     "shuffle-text": "^0.5.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -31,7 +31,7 @@
     "@vue/eslint-config-prettier": "^10.2.0",
     "eslint": "^9.22.0",
     "eslint-plugin-prettier": "^5.2.3",
-    "ipx": "^3.0.1",
+    "ipx": "^3.0.3",
     "prettier": "^3.5.3",
     "sharp": "^0.33.5",
     "sitemap": "^8.0.0"
