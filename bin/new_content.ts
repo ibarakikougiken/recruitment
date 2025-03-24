@@ -2,7 +2,8 @@ import crypto from "crypto";
 import fs from "fs";
 
 const post_dir = "content/contents";
-const path = `${post_dir}/${crypto.randomUUID()}.md`;
+const slug = crypto.randomUUID();
+const path = `${post_dir}/${slug}.md`;
 
 const template = `---
 title: "Title here"
@@ -22,4 +23,8 @@ tags:
 `;
 
 fs.writeFileSync(path, template);
+
+fs.mkdirSync(`public/contents/${slug}`);
+fs.copyFileSync("public/ogp.png", `public/contents/${slug}/ogp.png`);
+
 console.log(`Created new content: ${path}`);
