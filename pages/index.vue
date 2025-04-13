@@ -17,60 +17,30 @@ useSeoMeta(meta);
         ぜひ、新歓イベントにお越しください！
       </p>
 
-      <h2>新歓イベント</h2>
-      <p>開催予定の新歓イベント</p>
-      <ul>
-        <li>
-          4月9日
-          <ul>
-            <li>新歓祭 (水戸キャンパス)</li>
-            <li>課外活動説明会 (日立キャンパス)</li>
-          </ul>
-        </li>
-        <li>
-          日時未定（4～5月）
-          <ul>
-            <li>ドローン操縦体験会</li>
-          </ul>
-        </li>
-      </ul>
-
-      <h2>新歓祭について</h2>
-      <p>
-        <span>
-          新歓祭は、茨城大学水戸キャンパスで開催される新入生歓迎イベントです。
-        </span>
-        <span>
-          航空技術研究会は、ブースを出展し、活動内容の紹介やトイドローン操縦体験を行います。
-        </span>
-      </p>
-      <p>
-        ブースは、人文社会科学部講義棟15番教室に10:30～17:00の間設置されます。
-        お立ち寄りいただければ幸いです。
-      </p>
-
-      <h2>課外活動説明会について</h2>
-      <p>
-        <span>
-          課外活動説明会は、茨城大学日立キャンパスで開催される課外活動紹介イベントです。
-        </span>
-        <span>
-          工学部生向けの展示を行います。また、トイドローンの操縦体験会も予定しています。
-        </span>
-      </p>
-      <p>
-        展示は、日立キャンパス1号館1階ロビーに11:00～13:00、14:00～16:00の間設置されます。
-        お立ち寄りいただければ幸いです。
-      </p>
-
-      <h2>ドローン操縦体験会について</h2>
+      <h2>ドローン操縦体験会</h2>
       <p>
         <span>
           ドローン操縦体験会では、茨城大学水戸キャンパス第2グラウンドで、DJI
           Phantom 4 Advanceを操縦できます。
         </span>
-        <span>日時等はTwitterでお知らせします。お楽しみに！</span>
+        <span>
+          予約などは不要なので、お気軽にご参加ください！ 2年生以上も大歓迎です！
+        </span>
       </p>
+
+      <img src="/images/memo.png" alt="ドローン操縦体験会チラシ" />
+      <div class="flyers">
+        <img
+          src="/images/ee1.png"
+          alt="ドローン操縦体験会チラシの表面"
+          class="flyer"
+        />
+        <img
+          src="/images/ee2.png"
+          alt="ドローン操縦体験会チラシの裏面"
+          class="flyer"
+        />
+      </div>
 
       <h2>お問い合わせ</h2>
       <p>
@@ -118,6 +88,23 @@ span {
 .description ul {
   margin: 0;
   padding: 0 1rem;
+}
+
+.flyers {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+img {
+  margin: 0.5rem auto;
+  max-width: min(720px, 100%);
+}
+.flyer {
+  margin: 0.5rem 0;
+  max-width: min(360px, 100%);
 }
 
 .icon {

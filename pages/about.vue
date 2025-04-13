@@ -15,9 +15,27 @@ useSeoMeta(meta);
     <div>
       <h2>体験会</h2>
       <p>
-        <span>Commig soon...</span>
-        <span>ドローンの操縦体験会は今後、Twitterで告知する予定です。</span>
+        <span>ドローンの操縦体験会を 3/20（日）、3/27(日)に開催します</span>
+        <span>
+          予約などは不要なので、お気軽にご参加ください！ 2年生以上も大歓迎です！
+        </span>
+        <span>
+          悪天時は、中止となる可能性があります。
+          中止等の場合は、Twitterでお知らせいたしますので、フォローをよろしくお願いします！
+        </span>
       </p>
+      <div class="flyers">
+        <img
+          src="/images/ee1.png"
+          alt="ドローン操縦体験会チラシの表面"
+          class="flyer"
+        />
+        <img
+          src="/images/ee2.png"
+          alt="ドローン操縦体験会チラシの裏面"
+          class="flyer"
+        />
+      </div>
 
       <h2>活動内容</h2>
       <p>航空技術研究会の活動は、以下のようなものがあります。</p>
@@ -47,7 +65,7 @@ useSeoMeta(meta);
       <p>日立キャンパスでは、平日に活動することが多いです。</p>
 
       <h2>メンバー</h2>
-      <p>現在のメンバー数：10人（学部生：8人）</p>
+      <p>現在のメンバー数：11人（学部生：9人）</p>
       <p>学部生の学部：工学部（100%）</p>
       <p>
         学部生の学部：機械システム工学科、物質科学工学科、電気電子工学科、情報工学科
@@ -66,7 +84,7 @@ useSeoMeta(meta);
         <tbody>
           <tr>
             <td>機械システム工学科</td>
-            <td>3</td>
+            <td>4</td>
             <td>1</td>
             <td>1</td>
           </tr>
@@ -117,6 +135,20 @@ useSeoMeta(meta);
   max-width: min(800px, calc(100vw - 3rem));
   margin: 0 auto;
 }
+
+.flyers {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.flyer {
+  margin: 0.5rem 0;
+  max-width: min(360px, 100%);
+}
+
 h2 {
   margin: 2em 0 0.5em;
 }
